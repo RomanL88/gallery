@@ -1,0 +1,35 @@
+img {
+  margin: 0 1em 0 1em;
+  border: 5px solid cadetblue;
+  border-radius: 10%;
+}
+figure {
+  background-color: coral;
+}
+figcaption {
+  text-align: center;
+  background-color: darkgreen;
+  color: aqua;
+}
+figure p {
+  color: azure;
+}
+label {
+  color: darkgreen;
+}
+.container {
+  margin: 0 2em;
+  background-color: darkmagenta;
+  text-align: center;
+}
+.delButton {
+  padding: 3em;
+  background-color: darkred;
+  color: blueviolet;
+  border-radius: 10%;
+}
+.forDelButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
