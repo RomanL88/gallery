@@ -28,8 +28,9 @@ label {
   color: blueviolet;
   border-radius: 10%;
 }
-.forDelButton {
+/* .forDelButton {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
+  align-items: left;
+  justify-content: left;
+  flex-direction: column;
+} */

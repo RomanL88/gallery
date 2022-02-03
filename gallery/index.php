@@ -7,74 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
     <link rel="stylesheet" href="css/gallery-styles.css">
-    <!--INSERT FONTS-->
 </head>
 
 <body>
-    <a href="load.php">Загрузка фото</a><br>
-
-    <?php
-    $wimage = "";
-    $fimg = "";
-    $path = "images/"; // задаем путь до сканируемой папки с изображениями
-    $images = scandir($path); // сканируем папку
-    if ($images !== false) { // если нет ошибок при сканировании
-        $images = preg_grep("/\.(?:png|gif|jpe?g)$/i", $images); // через регулярку создаем массив только изображений
-        if (is_array($images)) { // если изображения найдены
-            foreach ($images as $image) { // делаем проход по массиву
+    <a href="load-page.php">Загрузка фото</a><br>
 
 
 
-                echo '<figure>';
-                $fimg = "<img src='" . $path . htmlspecialchars(urlencode($image)) . "' alt='" . $image . "' />";
-                echo '<figcaption>' . $image . '</figcaption>';
-                echo '<p>' . "Файл $image был загружен: " . date("F d Y H:i:s.", filectime($image)) . '</p>';
-                echo $fimg;
-                echo '<div class="container">';
+    <!--ФОРМА ДЛЯ УДАЛЕНИЯ-->
+    <form method="POST" action="delete-photo.php">
 
-                echo '<form method="POST">';
-                echo '<input type="checkbox" name = "delImgs[]" value="' . $image . '">' . '<label>Удалить</label>';
-                echo '</form>';
+        <?php include 'php-logics/load-photo.php' // СТРАНИЦА ЗАГРУЗКИ ФОТО
+        ?>
 
+        <div class="container">
+            <input type="checkbox" name="delAllImg"><label>Удалить всё</label>
+        </div>
 
-                echo '</div>';
-                echo '</figure>';
-            }
+        <div class="forDelButton">
+            <button type="submit" class="delButton">Удалить</button>
+        </div>
 
-            $wimage .= $fimg;
-        }/*  else { // иначе, если нет изображений
-            $wimage .= "<div style='text-align:center'>Не обнаружено изображений в директории!</div>\n";
-        }
-    } else { // иначе, если директория пуста или произошла ошибка
-        $wimage .= "<div style='text-align:center'>Директория пуста или произошла ошибка при сканировании.</div>"; */
-    }
-    echo '<div class="container">';
-    echo '<input type="checkbox" name = "delAllImg">' . '<label>Удалить всё</label>';
-    echo '</div>';
+    </form>
 
 
-    echo '<div class="forDelButton">';
-    echo '<button type="submit" class="delButton">Удалить</button>';
-    echo '</div>';
 
-
-    /////////ЛОГИКА ДЛЯ УДАЛЕНИЯ БЫБРАННЫХ ФОТО////////////////////////////////////
-
-    $delImgs = $_POST['delImg']; // для каждого выбранного поля
-    if (isset($delImgs)) {
-        foreach ($delImgs as $delImg) {
-            //удалить выбранное фото
-        }
-    }
-
-
-    /////////////////////////////////////////////////////////////////////////////////
-    //echo $wimage; // выводим полученный результат
+    <?php include 'php-logics/delete-photo.php';
+    ?>
+    <!--  //echo $wimage; // выводим полученный результат
     /* echo '<br>';
     $name = $_FILES['image']['name'];
     echo "Файл $name был загружен: " . date("F d Y H:i:s.", filectime($name));
-    echo '<br>'; */
-    ?>
+    echo '<br>'; */ -->
+
 
 </body>
 
