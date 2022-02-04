@@ -15,7 +15,7 @@
 
 
     <!--ФОРМА ДЛЯ УДАЛЕНИЯ-->
-    <form method="POST" action="delete-photo.php">
+    <form method="POST" action="php-logics/delete-photo.php">
 
         <?php include 'php-logics/load-photo.php' // СТРАНИЦА ЗАГРУЗКИ ФОТО
         ?>
@@ -32,8 +32,7 @@
 
 
 
-    <?php include 'php-logics/delete-photo.php';
-    ?>
+
     <!--  //echo $wimage; // выводим полученный результат
     /* echo '<br>';
     $name = $_FILES['image']['name'];

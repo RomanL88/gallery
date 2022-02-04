@@ -22,12 +22,12 @@ $images = scandir($path); // сканируем папку
                 <p>Файл <?= $image ?> был загружен: <?= date("F d Y H:i:s.", filectime($image)) ?></p>
                 <?php $fimg = $path .   htmlspecialchars(urlencode($image)) ?>
 
-                <?php var_dump($fimg); ?>
+                <?php var_dump($image); ?>
 
                 <div class="container">
 
 
-                    <input type="checkbox" name="delImgs" value="<?= $image ?>"><label>Удалить</label>
+                    <input type="checkbox" name="delImgs[]" value="<?= $path . $image ?>"><label>Удалить</label>
 
 
                 </div>

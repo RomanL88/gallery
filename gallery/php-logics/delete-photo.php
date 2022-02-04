@@ -9,11 +9,15 @@
         unlink($fimg); //удалить выбранное фото
     }
 } */
-$selectedPhoto = $_POST['delImgs'];
 
-if (isset($fimg)) {
 
+
+
+
+if (isset($_POST['delImgs'])) {
+    $selectedPhoto = $_POST['delImgs'];
     foreach ($selectedPhoto as $deletedPhoto) {
+        var_dump('/' . $deletedPhoto);
         unlink($deletedPhoto);
     }
 }
