@@ -20,8 +20,9 @@
         <?php include 'php-logics/load-photo.php' // СТРАНИЦА ЗАГРУЗКИ ФОТО
         ?>
 
+
         <div class="container">
-            <input type="checkbox" name="delAllImg"><label>Удалить всё</label>
+            <input type="checkbox" name="delAll"><label>Удалить всё</label>
         </div>
 
         <div class="forDelButton">

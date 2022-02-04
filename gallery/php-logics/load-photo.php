@@ -1,4 +1,5 @@
 <?php    // ВЫВОДИТ ИЗОБРАЖЕНИЯ ИЗ СЕРВЕРА НА ГЛАВНУЮ СТРАНИЦУ
+$wayForDel = [];
 $wimage = "";
 $fimg = "";
 $path = "upload/"; // задаем путь до сканируемой папки с изображениями
@@ -10,6 +11,7 @@ $images = scandir($path); // сканируем папку
     <?php if (is_array($images)) { // если изображения найдены
     ?>
         <?php foreach ($images as $image) {
+
             // делаем проход по массиву
         ?>
 
@@ -23,6 +25,10 @@ $images = scandir($path); // сканируем папку
                 <?php $fimg = $path .   htmlspecialchars(urlencode($image)) ?>
 
                 <?php var_dump($image); ?>
+                <!--НУЖНО ЗАПИСАТЬ ПУТИ ИЗОБРАЖЕНИЙ В МАССИВ-->
+                <!-- СЕЙЧАС ПУТИ ЗАПИСЫВАЮТСЯ В НУЛЕВУЮ ЯЧЕЙКУ -->
+                <?php $wayForDel[] = $path . $image . '; ' ?>
+
 
                 <div class="container">
 
@@ -33,6 +39,10 @@ $images = scandir($path); // сканируем папку
                 </div>
             </figure>
         <?php } ?>
-
+        <!--УКАЗАЛИ ВСЕ КАРТИНКИ В VALUE-->
+        <!-- В ЗНАЧЕНИИ VALUE ЛЕЖАТ ПОДРЯД ВСЕ ПУТИ К ЗАГРУЖЕННЫМ КАРТИНКАМ В ОДНОЙ СТРОКЕ -->
+        <input type="hidden" name="delAllImg[]" value="<?php foreach ($wayForDel as $x) {
+                                                            echo $x;
+                                                        } ?>">
     <?php } ?>
 <?php } ?>
