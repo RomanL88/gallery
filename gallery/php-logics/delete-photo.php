@@ -1,58 +1,26 @@
 <?php
-/////////ЛОГИКА ДЛЯ УДАЛЕНИЯ БЫБРАННЫХ ФОТО////////////////////////////////////
 
-/* if (isset($_POST['delImgs'])) {
-
-    $delImgs = $_POST['delImgs'];
-    foreach ($delImgs as $delImg) { // для каждого выбранного поля
-
-        unlink($fimg); //удалить выбранное фото
-    }
-} */
-
-
-
-//УДАЛЯЕТ ОТДЕЛЬНО ВЫБРАННУЮ КАРТИНКУ - РАБОТАЕТ
-/* 
-if (isset($_POST['delImgs'])) { // если установлено значение
+if (isset($_POST['delImgs'])) {
     $selectedPhoto = $_POST['delImgs'];
-    foreach ($selectedPhoto as $deletedPhoto) { // для каждого элемента 
-        var_dump('../' . $deletedPhoto); // покажи, что за элемент
-        unlink('../' . $deletedPhoto); // удали его
+    foreach ($selectedPhoto as $deletedPhoto) {
+        var_dump('../' . $deletedPhoto);
+        unlink('../' . $deletedPhoto);
     }
 }
- */
 
-
-
-
-/* 
 echo '<pre>';
-var_dump(explode(';', $_POST['delAllImg'][0]));
-echo '<pre>'; */
 
+$countImg = (count($_POST['delAllImg']) - 1);
 
-// присваиваем массив адресов переменной
-$adressMessage = (explode(';', $_POST['delAllImg'][0]));
+echo '<pre>';
 
+$adressMessage = (explode(';', $_POST['delAllImg'][$countImg]));
+var_dump($adressMessage);
 
-// "УДАЛИТЬ ВСЁ"
-if (isset($_POST['delAll'])) { // ЕСЛИ УКАЗАЗАНО УДАЛИТЬ ВСЁ
+if (isset($_POST['delAll'])) {
     foreach ($adressMessage as $delImg) {
         var_dump($delImg);
         echo '<br>';
-        unlink('../' . $delImg);      // УДАЛИТЬ ВСЕ КАРТИНКИ
+        unlink('../' . $delImg);
     }
 }
-
-
-
-
-/* // "УДАЛИТЬ ВСЁ"
-if (isset($_POST['delAllImg'])) {  // усли выбрано удалить всё
-    $selectedPhoto = $_POST['delImgs[]']; //выбираем весь массив
-    foreach ($selectedPhoto as $deletedPhoto) { // для каждого элемента 
-        var_dump('/' . $deletedPhoto); // покажи, что за элемент
-        unlink('../' . $deletedPhoto); // удали его
-    }
-} */
